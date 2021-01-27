@@ -1,30 +1,64 @@
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400&display=swap" rel="stylesheet">
+</svelte:head>
+
 <script>
-	export let name;
+	//export let name;
+
+	import router from "page";
+	import LogIn from './components/routes/LogIn.svelte';
+	import Register from './components/routes/Register.svelte';
+
+
+	let page;
+
+	router('/', () => page = LogIn) // TODO: hacer un home
+	router('/login', () => page = LogIn)
+	router('/register', () => page = Register)
+
+	router.start()
+
 </script>
 
+
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<svelte:component this={page} />
 </main>
 
+
 <style>
+
+	:global(:root) {
+		--usafa-blue: #035483; --green-blue-crayola: #0582CA; --carolina-blue: #069EF6;
+		--eerie-black: #1D201F; --xanadu: #788581; --cultured: #EEF0EF;
+
+		--ff: 'Lato', sans-serif;
+	}
+
+	:global(body) {
+		background-color: #3E2C3F;
+	}
+
+	main :global(h1, p, span, label, input) {
+    font-family: var(--ff);
+  }
+
+  main :global(a) {
+    color: var(--green-blue-crayola);
+    font-weight: 700;
+
+    transition: .5s ease;
+  }
+	main :global(a:hover) {
+    color: var(--carolina-blue);
+  }
+
 	main {
-		text-align: center;
+		display: flex;
+		justify-content: center;
+
 		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>
