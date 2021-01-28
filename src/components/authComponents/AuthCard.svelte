@@ -4,14 +4,10 @@
   // Esto podría ser un slot, ahora mismo es un prop para que haya un poco de todo
   export let title;
   export let subtitle;
-
-  export let style = '';
 </script>
 
 
-<div class="card" {style}
-  in:fly="{{ x: 100, duration: 500 }}"
-  out:fade="{{ duration: 200 }}">
+<div class="card" in:fly="{{ x: 100, duration: 500 }}">
 
   <h1>{title}</h1>
   <p>{subtitle}</p>
@@ -58,7 +54,7 @@
 
 
   .form-cont {
-    margin: 3em 0;
+    margin: 2em 0 3em;
   }
 
 

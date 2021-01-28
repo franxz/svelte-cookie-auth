@@ -6,24 +6,31 @@
 <script>
 	//export let name;
 
-	import router from "page";
+	import page from 'page';
+	import Index from './components/routes/Index.svelte';
 	import LogIn from './components/routes/LogIn.svelte';
 	import Register from './components/routes/Register.svelte';
+	import { onMount } from 'svelte';
+	import { auth, guest } from './middlewares.js'
 
 
-	let page;
+	let route;
 
-	router('/', () => page = LogIn) // TODO: hacer un home
-	router('/login', () => page = LogIn)
-	router('/register', () => page = Register)
+	page('/', auth, () => route = Index)
+	page('/login', guest, () => route = LogIn)
+	page('/register', guest, () => route = Register)
 
-	router.start()
+	page.start()
 
+	onMount(async () => {
+		//const res = await fetch('/isLoggedIn');
+		//...
+	});
 </script>
 
 
 <main>
-	<svelte:component this={page} />
+	<svelte:component this={route} />
 </main>
 
 

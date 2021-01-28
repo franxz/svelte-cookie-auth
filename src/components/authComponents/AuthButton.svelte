@@ -1,10 +1,9 @@
 <script>
     export let txt;
-    export let style;
 </script>
 
 
-<button {style}>
+<button>
     <span>{txt}</span>
 </button>
 
@@ -12,7 +11,7 @@
 <style>
   button {
     width: 100%;
-    margin: 0;
+    margin: 0; margin-top: 1.5em;
     padding: 1em;
     border-radius: 1em;
     background-color: var(--green-blue-crayola);

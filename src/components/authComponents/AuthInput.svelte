@@ -2,11 +2,12 @@
   export let type = 'text';
   export let txt;
   export let name;
+  export let required = false;
 </script>
 
 
 <label for="{name}">{txt}</label>
-<input type="{type}" id="{name}" name="{name}">
+<input {type} id="{name}" {name} {required}>
 
 
 <style>

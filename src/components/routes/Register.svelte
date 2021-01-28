@@ -5,30 +5,23 @@
 
   const cardProps = {
     title: '¡Bienvenido!',
-    subtitle: 'Completa el formulario para crear una cuenta',
-    style: ''
-  }
-
-  function handleClick() {
-    cardProps.style = `${cardProps.style} position: absolute;`;
+    subtitle: 'Completa el formulario para crear una cuenta'
   }
 </script>
 
 
 <AuthCard {...cardProps}>
-  <form action="server/register" method="post" slot="form">
-    <AuthInput txt="Nombre de usuario" name="name" />
+  <form slot="form">
+    <AuthInput txt="Nombre de usuario" name="name" required="{true}" />
 
-    <AuthInput txt="Email" name="email" />
+    <AuthInput txt="Email" name="email" required="{true}" />
 
-    <AuthInput txt="Contraseña" name="password" type="password" />
+    <AuthInput txt="Contraseña" name="password" type="password" required="{true}" />
 
-    <AuthInput txt="Confirmar contraseña" name="confirmPassword" type="password" />
+    <AuthInput txt="Confirmar contraseña" name="confirmPassword" type="password" required="{true}" />
     
-    <AuthButton txt="Registrarse" style="margin-top: 1.5em" />
+    <AuthButton txt="Registrarse" />
   </form>
 
-  <span slot="footer">
-    ¿Ya tienes una cuenta? <a href="/login" on:click="{handleClick()}">Ingresar</a>
-  </span>
+  <span slot="footer">¿Ya tienes una cuenta? <a href="/login">Ingresar</a></span>
 </AuthCard>
