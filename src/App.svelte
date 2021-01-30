@@ -4,33 +4,53 @@
 </svelte:head>
 
 <script>
-	//export let name;
+	import page, { dispatch, redirect } from 'page';
+	import Index from './components/routes/Index.svelte'
+	import LogIn from './components/routes/LogIn.svelte'
+	import Register from './components/routes/Register.svelte'
+	import NotFound from './components/routes/NotFound.svelte'
+	import { onMount } from 'svelte'
+	import { auth, guest } from './middleware'
+	import { logIn } from './auth'
+	import { getReqOpt } from './config';
 
-	import page from 'page';
-	import Index from './components/routes/Index.svelte';
-	import LogIn from './components/routes/LogIn.svelte';
-	import Register from './components/routes/Register.svelte';
-	import { onMount } from 'svelte';
-	import { auth, guest } from './middlewares.js'
 
+	let loading = true
 
-	let route;
+	// ROUTER
+	let route
 
 	page('/', auth, () => route = Index)
 	page('/login', guest, () => route = LogIn)
 	page('/register', guest, () => route = Register)
+	page('*', () => route = NotFound)
 
-	page.start()
+	page.start({ dispatch: false })
 
+
+	// chequear si estoy logueado
 	onMount(async () => {
-		//const res = await fetch('/isLoggedIn');
-		//...
-	});
+		try {
+			const res = await fetch('http://localhost:3000/isLoggedIn', getReqOpt)
+			if (res.ok) {
+				logIn()
+			}
+			page(window.location.pathname) // los middleware auth y guest se encargan del resto
+			loading = false
+			
+		} catch(err) {
+			console.error(err)
+		}
+	})
 </script>
 
 
 <main>
-	<svelte:component this={route} />
+	{#if loading}
+		<p style="color: lightgray;">Aguanta un minutito...</p>
+	{:else}
+		<svelte:component this={route} />
+	{/if}
 </main>
 
 

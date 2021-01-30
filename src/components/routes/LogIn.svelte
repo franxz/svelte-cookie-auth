@@ -1,16 +1,17 @@
 <script>
-  import AuthCard from '../authComponents/AuthCard.svelte';
-  import AuthButton from '../authComponents/AuthButton.svelte';
-  import AuthInput from '../authComponents/AuthInput.svelte';
-  import page from 'page';
-  import { logIn } from '../../auth.js';
+  import AuthCard from '../authComponents/AuthCard.svelte'
+  import AuthButton from '../authComponents/AuthButton.svelte'
+  import AuthInput from '../authComponents/AuthInput.svelte'
+  import page from 'page'
+  import { logIn } from '../../auth.js'
+  import { postReqOptJSON } from '../../config'
 
   const cardProps = {
     title: '¡Hola!',
     subtitle: 'Completa los datos de tu cuenta para ingresar'
   }
 
-  const endPoint = 'http://localhost:3000/login';
+  const endPoint = 'http://localhost:3000/login'
 
   async function handleSubmit(event) {
     const payload = {
@@ -18,24 +19,16 @@
       password: event.target.password.value
     }
 
-    // TODO: pasar a config
-    const options = {
-      method: 'POST',
-      credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify( payload )
-    }
-
     try {
-      let res = await fetch(endPoint, options);
-      res = await res.json();
-
-      console.log(res); // TODO: purge
+      let res = await fetch(endPoint, postReqOptJSON(payload))
       
-      // y esto?
-      if (res.message === 'OK' || res.message === 'Ya estás loggeado') {
-        logIn();
-        page('/');
+      // DEBUG // TODO: purge
+      //res = await res.json();
+      //console.log(res);
+      
+      if (res.ok) {
+        logIn()
+        page.redirect('/')
       }
     } catch (err) {
       console.error(err)
