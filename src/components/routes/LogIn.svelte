@@ -3,15 +3,13 @@
   import AuthButton from '../authComponents/AuthButton.svelte'
   import AuthInput from '../authComponents/AuthInput.svelte'
   import page from 'page'
+  import { authApi, postReqOptJSON } from '../../config'
   import { logIn } from '../../auth.js'
-  import { postReqOptJSON } from '../../config'
 
   const cardProps = {
     title: '¡Hola!',
     subtitle: 'Completa los datos de tu cuenta para ingresar'
   }
-
-  const endPoint = 'http://localhost:3000/login'
 
   async function handleSubmit(event) {
     const payload = {
@@ -20,12 +18,7 @@
     }
 
     try {
-      let res = await fetch(endPoint, postReqOptJSON(payload))
-      
-      // DEBUG // TODO: purge
-      //res = await res.json();
-      //console.log(res);
-      
+      let res = await fetch(authApi.logIn, postReqOptJSON(payload))
       if (res.ok) {
         logIn()
         page.redirect('/')

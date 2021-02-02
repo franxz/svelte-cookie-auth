@@ -4,23 +4,24 @@
 </svelte:head>
 
 <script>
-	import page, { dispatch, redirect } from 'page';
-	import Index from './components/routes/Index.svelte'
+	import page from 'page'
+	import Home from './components/routes/Home.svelte'
 	import LogIn from './components/routes/LogIn.svelte'
 	import Register from './components/routes/Register.svelte'
 	import NotFound from './components/routes/NotFound.svelte'
+	import Loading from './components/Loading.svelte'
 	import { onMount } from 'svelte'
 	import { auth, guest } from './middleware'
 	import { logIn } from './auth'
-	import { getReqOpt } from './config';
+	import { authApi, getReqOpt } from './config'
 
 
-	let loading = true
+	let isLoading = true
 
 	// ROUTER
 	let route
 
-	page('/', auth, () => route = Index)
+	page('/', auth, () => route = Home)
 	page('/login', guest, () => route = LogIn)
 	page('/register', guest, () => route = Register)
 	page('*', () => route = NotFound)
@@ -31,12 +32,12 @@
 	// chequear si estoy logueado
 	onMount(async () => {
 		try {
-			const res = await fetch('http://localhost:3000/isLoggedIn', getReqOpt)
+			const res = await fetch(authApi.isLoggedIn, getReqOpt)
 			if (res.ok) {
 				logIn()
 			}
 			page(window.location.pathname) // los middleware auth y guest se encargan del resto
-			loading = false
+			isLoading = false
 			
 		} catch(err) {
 			console.error(err)
@@ -46,11 +47,9 @@
 
 
 <main>
-	{#if loading}
-		<p style="color: lightgray;">Aguanta un minutito...</p>
-	{:else}
+	<Loading {isLoading}>
 		<svelte:component this={route} />
-	{/if}
+	</Loading>
 </main>
 
 
