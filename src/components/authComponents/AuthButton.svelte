@@ -16,6 +16,10 @@
     border-radius: 1em;
     background-color: var(--green-blue-crayola);
     transition: .25s;
+    
+    /* sombra, terminar */
+    border-width: 0px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
   }
 
   button:hover {

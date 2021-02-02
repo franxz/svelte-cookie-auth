@@ -30,9 +30,10 @@
 </script>
 
 
+<!-- LogIn tiene validación básica por html: tipo email y atributo required (componente AuthInput) -->
 <AuthCard {...cardProps}>
   <form slot="form" on:submit|preventDefault={handleSubmit}>
-    <AuthInput txt="Email" name="email" required="{true}" />
+    <AuthInput txt="Email" name="email" type="email" required="{true}" />
 
     <AuthInput txt="Contraseña" name="password" type="password" required="{true}" />
     

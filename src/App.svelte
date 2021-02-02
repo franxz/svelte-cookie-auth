@@ -66,7 +66,7 @@
 		background-color: #3E2C3F;
 	}
 
-	main :global(h1, p, span, label, input) {
+	main :global(h1, p, span, label, input, small) {
     font-family: var(--ff);
   }
 

@@ -1,8 +1,8 @@
 <script>
-  export let type = 'text';
-  export let txt;
-  export let name;
-  export let required = false;
+  export let type = 'text'
+  export let txt
+  export let name
+  export let required = false
 </script>
 
 
@@ -11,6 +11,7 @@
 
 
 <style>
+
   label {
     margin: 0 0 0.15em 1em;
   }
@@ -26,4 +27,5 @@
   input:focus {
     border-color: var(--eerie-black);
   }
+
 </style>
