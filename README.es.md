@@ -12,7 +12,9 @@ Tal y como está, puede servir como plantilla para una SPA que utilice autentica
 - [X] validación de formularios (con [ApproveJs](https://github.com/CharlGottschalk/approvejs/))
 
 ### Captura de pantalla (formulario de registro)
-<p align="center">![imagen](https://user-images.githubusercontent.com/50384203/106847788-63c24f80-668e-11eb-88fe-860909c8ebeb.png)</p>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/50384203/106847788-63c24f80-668e-11eb-88fe-860909c8ebeb.png" alt="captura de pantalla" align="center">
+</p>
 
 ### Objetivos
 1. Desarrollar un frontend que utilice la api. La aplicación debe hacer solicitudes a todos los endpoints de la api.
