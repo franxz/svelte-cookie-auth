@@ -1,8 +1,8 @@
 <script>
+  import page from 'page'
   import AuthCard from '../authComponents/AuthCard.svelte'
   import AuthButton from '../authComponents/AuthButton.svelte'
   import AuthValInput from '../authComponents/AuthValInput.svelte'
-  import page from 'page'
   import { authApi, postReqOptJSON } from '../../config'
   import { logIn } from '../../auth'
   import { emailRules, Field, nameRules, passwordConfirmationRules, passwordRules } from '../../validation'
@@ -48,10 +48,9 @@
   }
 
   async function handleSubmit(event) {
-    // si el formulario no es válido vuelvo
+    // si el formulario no es válido vuelvo (en realidad debería deshabilitar el botón de submit... c:)
     for (const field in formState) {
       if (!formState[field].valResult.approved) {
-        console.log("NO VALIDO")
         return
       }
     }
@@ -76,7 +75,7 @@
 </script>
 
 
-<!-- Registro tiene validación por ApproveJs (componente AuthValInput) -->
+<!-- Registro tiene validación por ApproveJs -->
 <AuthCard {...cardProps}>
   <form slot="form" on:submit|preventDefault={handleSubmit} on:input={handleInput} autocomplete="off">
     <AuthValInput txt="Nombre de usuario" name="name" validation={formState.name.valResult} />

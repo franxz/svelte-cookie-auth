@@ -1,11 +1,12 @@
 <script>
+  import page from 'page'
   import AuthCard from '../authComponents/AuthCard.svelte'
   import AuthButton from '../authComponents/AuthButton.svelte'
   import AuthInput from '../authComponents/AuthInput.svelte'
-  import page from 'page'
   import { authApi, postReqOptJSON } from '../../config'
   import { logIn } from '../../auth.js'
 
+  
   const cardProps = {
     title: '¡Hola!',
     subtitle: 'Completa los datos de tu cuenta para ingresar'
@@ -30,7 +31,7 @@
 </script>
 
 
-<!-- LogIn tiene validación básica por html: tipo email y atributo required (componente AuthInput) -->
+<!-- LogIn tiene validación básica por html: tipo email y atributo required -->
 <AuthCard {...cardProps}>
   <form slot="form" on:submit|preventDefault={handleSubmit}>
     <AuthInput txt="Email" name="email" type="email" required="{true}" />

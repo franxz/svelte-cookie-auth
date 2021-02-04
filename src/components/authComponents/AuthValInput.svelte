@@ -15,7 +15,8 @@
   <label for="{name}">{txt}</label>
 
   <input {type} id="{name}" {name}
-    class:valid="{validation.approved}" class:invalid="{dirty && !validation.approved}"
+    class:valid="{validation.approved}"
+    class:invalid="{dirty && !validation.approved}"
     on:input|once="{() => dirty = true}">
 
   {#if dirty && !validation.approved}
@@ -27,7 +28,7 @@
 <style>
 
   div {
-    margin-bottom: 0.75em;
+    margin-bottom: 1em;
   }
 
   label {
@@ -38,33 +39,41 @@
     width: 100%;
     margin: 0;
     padding: 1em;
-    border-radius: 1em;
+    
+    border-radius: 1.5em;
+    border-color: var(--text3);
+    color: var(--text);
+    background-color: var(--fg);
+
     transition: .25s;
   }
 
   input:focus {
-    border-color: var(--eerie-black);
+    border-color: var(--text);
+    box-shadow: 0px 0px 1px var(--text);
   }
 
+  /* saco el estilo por defecto */
   input:invalid {
-    box-shadow: none; /* me deshago del estilo por defecto */
+    box-shadow: none;
   }
 
   .valid, .valid:focus {
-    border-color: #43aa8b;
-    box-shadow: 0px 0px 1px #43aa8b;
+    border-color: var(--success);
+    box-shadow: 0px 0px 1px var(--success);
   }
 
   .invalid, .invalid:focus {
-    border-color: #f94144;
-    box-shadow: 0px 0px 1px #f94144;
+    border-color: var(--error);
+    box-shadow: 0px 0px 1px var(--error);
   }
 
   small {
     display:block;
-    padding-left: 16px;
-    color: #f94144;
+    font-size: 0.8em;
     margin: 0.25em 0;
+    padding-left: 1.25em;
+    color: var(--error);
   }
 
 </style>

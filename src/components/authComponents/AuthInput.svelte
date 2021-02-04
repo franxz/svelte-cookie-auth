@@ -18,14 +18,20 @@
 
   input {
     width: 100%;
-    margin: 0; margin-bottom: 0.75em;
+    margin: 0; margin-bottom: 1em;
     padding: 1em;
-    border-radius: 1em;
+    
+    border-radius: 1.5em;
+    border-color: var(--text3);
+    color: var(--text);
+    background-color: var(--fg);
+
     transition: .25s;
   }
 
   input:focus {
-    border-color: var(--eerie-black);
+    border-color: var(--text);
+    box-shadow: 0px 0px 1px var(--text);
   }
 
 </style>

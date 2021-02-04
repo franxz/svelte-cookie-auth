@@ -1,13 +1,12 @@
 <script>
-  import { fade, fly } from 'svelte/transition';
+  import { fly } from 'svelte/transition';
 
-  // Esto podría ser un slot, ahora mismo es un prop para que haya un poco de todo
   export let title;
   export let subtitle;
 </script>
 
 
-<div class="card" in:fly="{{ x: 100, duration: 500 }}">
+<div class="card" in:fly="{{ x: 100, duration: 250 }}">
 
   <h1>{title}</h1>
   <p>{subtitle}</p>
@@ -25,11 +24,10 @@
   
 <style>
   .card {
-    margin: 0;
+    width: 400px;
     padding: 1.5em 1em 1em;
-
-    border-radius: 1em;
-    background-color: var(--cultured);
+    border-radius: 1.5em;
+    background-color: var(--fg);
   }
 
 
@@ -42,25 +40,17 @@
     font-size: 2.25em;
     margin: 0;
     font-weight: 900;
-    color: var(--eerie-black);
   }
 
 
   p {
     margin-top: 0.5em;
     font-style: italic;
-    color: var(--xanadu);
+    color: var(--text2);
   }
 
 
   .form-cont {
     margin: 2em 0 3em;
-  }
-
-
-  @media (min-width: 640px) { /* ok? */
-    .card {
-      width: 400px;
-    }
   }
 </style>

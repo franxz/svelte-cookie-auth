@@ -4,7 +4,7 @@
 
 
 {#if isLoading}
-  <p style="color: lightgray;">Aguanta un minutito...</p>
+  <p style="color: var(--fg);">Aguanta un minutito...</p>
 {:else}
   <slot />
 {/if}

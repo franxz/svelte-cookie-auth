@@ -1,13 +1,25 @@
-# Cookie Auth Frontend
-Frontend de autenticación basada en cookies HttpOnly desarrollado en Svelte. Completa un proyecto que comenzó con una api de autentificación desarrollada en Node.js (en GitHub próximamente).
+# Svelte Cookie Auth
+#### Svelte single page application (SPA) with HttpOnly cookie based authentication 🔒
+🇪 🇸 [Leer en español](./README.es.md)
+---
 
-## Características
-- [X] logIn, registro y logOut (solicitudes POST a la api de autorización)
-- [X] página de Home (solicitud GET a la api de autorización)
-- [X] routing (con [page.js](https://github.com/visionmedia/page.js))
-- [X] validación de formularios (con [ApproveJs](https://github.com/CharlGottschalk/approvejs/))
+This application completes a project that started with an auth api developed in Node.js (coming soon to GitHub).
 
-## TODO (sólo para referencia del desarrollador)
-- evitar autocompletado de credenciales en Registro?
-- no mostrar el campo 'Confirmar contraseña' como válido si 'Contraseña' no es válido?
-- terminar estilos
+As is, it can serve as a template for a SPA that uses HttpOnly cookie based auth.
+
+### Features
+- [X] logIn, register and logOut (POST requests to the auth api)
+- [X] Home page (makes GET request to the auth api)
+- [X] routing (with [page.js] (https://github.com/visionmedia/page.js))
+- [X] form validation (with [ApproveJs] (https://github.com/CharlGottschalk/approvejs/))
+
+### Screenshot (register form)
+<p align="center">![imagen](https://user-images.githubusercontent.com/50384203/106847788-63c24f80-668e-11eb-88fe-860909c8ebeb.png)</p>
+
+### Objectives
+1. Develop a frontend that uses the api. The application must make requests to all api endpoints.
+2. Use Svelte. In that sense, the logIn and register forms are the most polished components, in order to explore the features of Svelte and other topics such as routing and client-side validation of forms.
+
+### Notes
+- the Home and NotFound pages are placeholders
+- the design is not responsive 
