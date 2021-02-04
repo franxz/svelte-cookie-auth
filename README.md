@@ -1,9 +1,7 @@
 # Svelte Cookie Auth
 **Svelte single page application (SPA) with HttpOnly cookie based authentication 🔒**
 
-**[Leer en español](./README.es.md)**
-
----
+**>** [Leer en español](./README.es.md)
 
 This application completes a project that started with an auth api developed in Node.js (coming soon to GitHub).
 
