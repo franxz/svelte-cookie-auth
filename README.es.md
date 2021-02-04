@@ -1,6 +1,8 @@
 # Svelte Cookie Auth
 **Aplicación de página única (SPA) desarrollada en Svelte, con autenticación basada en cookies HttpOnly 🔒**
 
+---
+
 Esta aplicación completa un proyecto que comenzó con una api de autentificación desarrollada en Node.js (próximamente en GitHub).
 
 Tal y como está, puede servir como plantilla para una SPA que utilice autenticación basada en cookies HttpOnly.

@@ -3,6 +3,8 @@
 
 **[Leer en español](./README.es.md)**
 
+---
+
 This application completes a project that started with an auth api developed in Node.js (coming soon to GitHub).
 
 As is, it can serve as a template for a SPA that uses HttpOnly cookie based auth.
